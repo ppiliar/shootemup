@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<players>
+    <player>
+        <image>images/playeranim.png</image>
+        <character>hitman1</character>
+        <name>hrac1</name>
+    </player>
+    <player>
+        <character>manBlue</character>
+        <name>hrac2</name>
+    </player>
+    <player>
+        <character>soldier1</character>
+        <name>hrac3</name>
+    </player>
+
+</players>

@@ -1,0 +1,51 @@
+public void draw(Graphics g) {
+
+        int x1 = (int)this.getPosition().getX();
+        int y1 = (int)this.getPosition().getY();
+        int x2 = (int)this.getPosition().getX()+(int)this.getBody().getWidth();
+        int y2 = (int)this.getPosition().getY()+(int)this.getBody().getHeight();
+
+        int sx1=0;
+        int sy1=0;
+        int sx2=0;
+        int sy2=0;
+
+       // g.drawImage(img,(int)this.getPosition().getX() , (int)this.getPosition().getY(),(int)this.getBody().getWidth(),(int)this.getBody().getHeight(), null);
+
+        if(getVelX()==0 && getVelY()==0){
+            switch (direction){
+                case S:sx1=32;sy1=0;sx2=64;sy2=32;break;
+                case W:sx1=32;sy1=32;sx2=64;sy2=64;break;
+                case E:sx1=32;sy1=64;sx2=64;sy2=96;break;
+                case N:sx1=32;sy1=96;sx2=64;sy2=128;break;
+                default:break;
+            }
+
+        }else{
+            switch (direction) {
+                case S:
+                    sx1 = (int) animationDelta * 2 * 32;
+                    sy1 = 0;
+                    sx2 = sx1 + 32;
+                    sy2 = sy1 + 32;
+                    break;
+                case W:
+                    sx1 = (int) animationDelta * 2 * 32;
+                    sy1 = 32;
+                    sx2 = sx1+32;
+                    sy2 = sy1 + 32;
+                    break;
+                case E:
+                    sx1 = (int) animationDelta * 2 * 32;
+                    sy1 = 64;
+                    sx2 = sx1+32;
+                    sy2 = sy1 + 32;
+                    break;
+                case N:
+                    sx1 = (int) animationDelta * 2 * 32;
+                    sy1 = 96;
+                    sx2 = sx1+32;
+                    sy2 = sy1 + 32;
+                    break;
+            }
+        }

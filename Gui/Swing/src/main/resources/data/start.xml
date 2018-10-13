@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<startData>
+    <launch>
+        <background>images/skylogo.png</background>
+        <background>images/logo.png</background>
+    </launch>
+    <menu>
+        <background>images/desertnight.png</background>
+        <button action="live">
+            <image state="start">images/buttonStock1.png</image>
+            <image state="highlighted">images/buttonStock1d.png</image>
+            <image state="pressed">images/buttonStock1h.png</image>
+            <text font="neuropol.ttf" size="20">Start</text>
+        </button>
+        <button action="settings">
+            <image state="start">images/buttonStock1.png</image>
+            <image state="highlighted">images/buttonStock1d.png</image>
+            <image state="pressed">images/buttonStock1h.png</image>
+            <text font="neuropol.ttf" size="20">Settings</text>
+        </button>
+    </menu>
+
+    <live>
+        <config>data/live.config</config>
+    </live>
+</startData>
+
