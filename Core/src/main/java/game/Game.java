@@ -32,7 +32,8 @@ public class Game {
     protected List<CollectableModel> collectableModels = new ArrayList<>();
     protected String mapName;
 
-    private Properties prop=new Properties();
+    private Properties prop = new Properties();
+    private Random randomGenerator = new Random();
 
     public Game() {
 
@@ -98,9 +99,9 @@ public class Game {
             player.setLeftKey( f.getInt(null));
             f = KeyEvent.class.getField(shoot);
             player.setShootKey( f.getInt(null));
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
         } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (NoSuchFieldException e) {
             e.printStackTrace();
         }
 
@@ -195,7 +196,6 @@ public class Game {
         this.collectableModels.add(c);
     }
     public void spawnCollectable(){
-        Random randomGenerator = new Random();
         int index = randomGenerator.nextInt(collectableModels.size());
         CollectableModel cm = collectableModels.get(index);
         Collectable c = createCollectable(cm);

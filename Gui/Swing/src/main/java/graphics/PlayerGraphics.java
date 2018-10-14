@@ -136,7 +136,7 @@ public class PlayerGraphics extends Player implements Drawable {
      */
     public BufferedImage rotateSprite(Double angle, BufferedImage img){
         AffineTransform tx = new AffineTransform();
-        tx.rotate(angle, img.getWidth() / 2, img.getHeight() / 2);
+        tx.rotate(angle, img.getWidth() / 2f, img.getHeight() / 2f);
         AffineTransformOp op = new AffineTransformOp(tx,
                 AffineTransformOp.TYPE_BILINEAR);
         img = op.filter(img, null);

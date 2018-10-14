@@ -27,6 +27,7 @@ import java.io.*;
 import java.util.*;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.logging.Level;
 
 import static java.lang.Thread.sleep;
 
@@ -207,7 +208,8 @@ public class GuiManager implements ActionListener,Runnable {
                 try {
                     thread.join();
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    LOGGER.log(Level.WARNING, "Interrupted!", e);
+                    Thread.currentThread().interrupt();
                 }
                 stats(game);
                 /*try {
@@ -315,14 +317,15 @@ public class GuiManager implements ActionListener,Runnable {
         BufferedImage logoImage = null;
         try {
             logoImage = ImageIO.read(this.getClass().getResourceAsStream("/"+logoFile));
+
+            // Zmena velkosti obrazka
+            Image logoImageScaled = logoImage.getScaledInstance(800, 480, Image.SCALE_SMOOTH);
+            logoImage.getGraphics().drawImage(logoImageScaled, 0, 0, null );
+
+            backgroundGraphics.drawImage(logoImage, 0, 0,  null);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        // Zmena velkosti obrazka
-        Image logoImageScaled = logoImage.getScaledInstance(800, 480, Image.SCALE_SMOOTH);
-        logoImage.getGraphics().drawImage(logoImageScaled, 0, 0, null );
-
-        backgroundGraphics.drawImage(logoImage, 0, 0,  null);
         DrawablePanel dpanel = new DrawablePanel(backgroundImage);
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel,BoxLayout.PAGE_AXIS));

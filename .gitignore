@@ -4,3 +4,5 @@ build
 *.iml
 .project
 .settings
+logs/
+live.properties
