@@ -20,25 +20,25 @@ public class XmlReader {
         if (input == null) {
             LOGGER.severe("Unable to find "+ filename);
             //System.out.println("Sorry, unable to find " + filename);
+            return null;
         }
 
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory
                 .newInstance();
         DocumentBuilder documentBuilder = null;
-        try {
-            documentBuilder = documentBuilderFactory.newDocumentBuilder();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        }
         Document document = null;
         try {
+            documentBuilder = documentBuilderFactory.newDocumentBuilder();
             document = documentBuilder.parse(input);
+            document.normalize();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
         } catch (SAXException e) {
-            e.printStackTrace();
+        e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
+        e.printStackTrace();
         }
-        document.normalize();
+
         return document;
     }
 }

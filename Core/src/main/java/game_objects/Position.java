@@ -9,6 +9,7 @@ public class Position {
 
     private float x;
     private float y;
+    private Random rand = new Random();
 
     public Position(float x, float y){
         this.x=x;
@@ -36,7 +37,6 @@ public class Position {
         this.y=y;
     }
     public void setRandom(int maxWidth,int maxHeight){
-        Random rand = new Random();
         setXY(rand.nextInt(maxWidth),rand.nextInt(maxHeight) );
     }
 }

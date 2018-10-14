@@ -11,6 +11,8 @@ import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static java.util.logging.Level.*;
+
 public class GameLoop implements Runnable,KeyListener {
 
     protected static final Logger LOGGER = Logger.getLogger( Game.class.getName() );
@@ -112,7 +114,9 @@ public class GameLoop implements Runnable,KeyListener {
                 try {
                     Thread.sleep(1);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    LOGGER.log(Level.WARNING, "Interrupted!", e);
+                    // Restore interrupted state...
+                    Thread.currentThread().interrupt();
                 }
             }
         }
@@ -127,13 +131,13 @@ public class GameLoop implements Runnable,KeyListener {
         int k = e.getKeyCode();
         if(k==KeyEvent.VK_ESCAPE){frame.removeKeyListener(this);running=false;return;}
         game.keyPressed(k);
-        LOGGER.log(Level.FINE,"key "+KeyEvent.getKeyText(k)+" pressed in gameloop");
+        LOGGER.log(FINE,"key "+KeyEvent.getKeyText(k)+" pressed in gameloop");
     }
 
     public void keyReleased(KeyEvent e) {
         int k = e.getKeyCode();
         game.keyReleased(k);
-        LOGGER.log(Level.FINE,"key "+KeyEvent.getKeyText(k)+" released in gameloop");
+        LOGGER.log(FINE,"key "+KeyEvent.getKeyText(k)+" released in gameloop");
     }
 
 }
